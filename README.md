@@ -1,83 +1,87 @@
-# Labirynth
-A simple but fun console-based labyrinth game written in C#. The player explores a randomly generated maze, collects items, fights monsters, and tries to find the exit. Nice to explore :D
-🎮 Features
+# 🧱 Гра "Лабіринт"  
 
-🔀 Random Maze Generation using depth-first search (DFS) algorithm with a stack.
+Цей проєкт — це консольна гра на C#, у якій гравець досліджує випадково згенерований лабіринт, збирає предмети та намагається знайти вихід.  
+Гра працює прямо в терміналі й не потребує додаткових бібліотек.  
 
-👾 Monster Encounter – face a monster and survive if you have a sword.
+---
 
-🔑 Items to Collect:
+## 🎮 Особливості гри  
 
-F – Lantern (helps you navigate).
+- 🔀 Генерація випадкового лабіринту (алгоритм DFS зі стеком).  
+- 🚶 Рух гравця по клітинках із відображенням у консолі.  
+- 🎒 Система інвентарю:  
+  - можна підбирати предмети;  
+  - переглядати їх описи;  
+  - використовувати.  
+- ❌ Вихід з лабіринту позначається `X`.  
+- 📜 Всі стіни та шляхи формуються автоматично при запуску гри.  
 
-! – Key (needed to open the exit).
+---
 
-S – Sword (to defeat the monster).
+## ⚙️ Алгоритм роботи  
 
-P – Medkit (+50 HP).
+1. Спочатку вся мапа заповнюється стінами.  
+2. Генератор випадковим чином створює прохід, використовуючи **DFS** (пошук у глибину) зі стеком.  
+3. У деяких клітинках розміщуються предмети.  
+4. Гравець починає в стартовій точці та може рухатися стрілками.  
+5. Якщо гравець досягає `X` — гра закінчується перемогою.  
 
-🚪 Exit Mechanism:
+---
 
-% – Locked exit (requires the key).
+## 🚀 Запуск  
 
-X – Open exit to win the game.
+### Варіант 1. Запуск із Visual Studio Code  
 
-❤️ Player Stats (HP, Inventory).
+1. Клонувати репозиторій або завантажити код.  
+2. Відкрити папку з проектом у **VS Code**.  
+3. Виконати команду:  
 
-🧭 Dynamic Location Descriptions depending on where the player is.
-
-🛠️ How It Works
-
-The maze is generated fully from scratch with walls # and paths ..
-
-Random items and enemies are placed inside free cells of the labyrinth.
-
-The player moves using WASD keys.
-
-The goal is to find the exit %, unlock it with the key !, and escape alive.
-
-▶️ Controls
-
-W → Move Up
-
-A → Move Left
-
-S → Move Down
-
-D → Move Right
-
-Q → Quit the game
-
-⚙️ How to Run
-Option 1: Run via dotnet run
-cd lab2
+```bash
 dotnet run
+```
 
-Option 2: Build an executable
+### Варіант 2. Збірка у `.exe` (Windows)  
 
-If you want a simple .exe (requires .NET installed on target machine):
+1. Виконати у терміналі:  
 
-dotnet publish -c Release -r win-x64 --self-contained false -p:PublishSingleFile=true
+```bash
+dotnet publish -c Release -r win-x64 --self-contained false
+```
 
+2. У папці `bin/Release/net8.0/win-x64/publish` з’явиться `.exe` файл.  
+3. Запустіть його подвійним кліком або через консоль.  
 
-The .exe will appear in:
+---
 
-bin\Release\netX.0\win-x64\publish\
+## 📂 Структура проекту  
 
-📷 Example Gameplay
+- `Program.cs` — основний файл із логікою гри.  
+- `MazeGenerator.cs` — генератор лабіринту.  
+- `Inventory.cs` — система інвентарю.  
+- `README.md` — документація (цей файл).  
+
+---
+
+## 📊 Приклад роботи  
+
+```
 ###########
-#..F....M.#
-#.#.###.#.#
-#.#...#.#.#
-#S.#P.#.!.X
+#@   #   X#
+### # # ###
+#   #     #
+# ### ### #
+#     #   #
 ###########
+```
 
-📌 To-Do / Ideas
+- `@` — гравець.  
+- `#` — стіна.  
+- `X` — вихід.  
 
- Multiple monsters instead of one.
+---
 
- Fog-of-war effect with lantern.
+## 📌 Плани на майбутнє  
 
- Save/load game state.
-
- Better UI (colors, smoother movement).
+- Додати різні типи предметів (ключі, зброю, їжу).  
+- Реалізувати ворогів.  
+- Зробити кольорове відображення для кращої читабельності.  
